@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sc_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.panopset.droid.textslider.TextSlider
+            android:id="@+id/throttleCycles"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:lbl="@string/throttleCycles"
+            app:max="10000"
+            app:min="0" />
+        <com.panopset.droid.textslider.TextSlider
+            android:id="@+id/throttleMillis"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:lbl="@string/throttleMillis"
+            app:max="10000"
+            app:min="0" />
+        <com.panopset.droid.textslider.TextSlider
+            android:id="@+id/xbounds"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:lbl="@string/x_bounds"
+            app:max="100000"
+            app:min="0" />
+        <com.panopset.droid.textslider.TextSlider
+            android:id="@+id/ybounds"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:lbl="@string/y_bounds"
+            app:max="100000"
+            app:min="0" />
+        <com.panopset.droid.pan.NumberChange
+            android:id="@+id/redNumberChange"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:nclbl="@string/r"
+            app:ncmax="255" />
+        <com.panopset.droid.pan.NumberChange
+            android:id="@+id/greenNumberChange"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:nclbl="@string/g"
+            app:ncmax="255" />
+        <com.panopset.droid.pan.NumberChange
+            android:id="@+id/blueNumberChange"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:nclbl="@string/b"
+            app:ncmax="255" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shape" />
+
+        <Spinner
+            android:id="@+id/spinner_shape_shifter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <CheckBox
+            android:id="@+id/global_random_color_start"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/random_color_start" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sc_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/sc_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_save"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/sc_duplicate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_duplicate"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/sc_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_delete"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

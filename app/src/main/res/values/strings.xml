@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Ripon</string>
+    <string name="ripon_title">Welcome to Ripon! Define your skipping stones here.</string>
+    <string name="cmd_add">add</string>
+    <string name="cmd_clear">clear</string>
+    <string name="cmd_share">Export</string>
+    <string name="cmd_import">Import</string>
+    <string name="cmd_go">go</string>
+    <string name="cmd_options">options</string>
+    <string name="title_stone_list">Skipping stones</string>
+    <string name="hint_stone">Stone name</string>
+    <string name="button_save">Save</string>
+    <string name="button_duplicate">Duplicate</string>
+    <string name="button_delete">Delete</string>
+    <string name="empty_not_shared">Please add at least one stone, before sharing.</string>
+    <string name="empty_not_saved">Stone not saved, because its name is empty.</string>
+    <string name="empty_warning">Please define at least one skipping stone, before selecting go.</string>
+    <string name="import_warning">Please import text that was exported.</string>
+    <string name="x_bounds">X bounds</string>
+    <string name="y_bounds">Y bounds</string>
+    <string name="change">Change</string>
+    <string name="bounce">Bounce</string>
+    <string name="random">Random</string>
+    <string name="throttleMillis">Delay Millis</string>
+    <string name="throttleCycles">Delay Cycles</string>
+    <string name="r" translatable="false">R</string>
+    <string name="g" translatable="false">G</string>
+    <string name="b" translatable="false">B</string>
+    <string name="random_color_start">Random color start</string>
+    <string name="label">Label</string>
+    <string name="spacer">1</string>
+    <string name="shape">Shape</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply_to_all_stones">Apply to all stones</string>
+</resources>

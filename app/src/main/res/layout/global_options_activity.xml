@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.panopset.droid.textslider.TextSlider
+        android:id="@+id/globalThrottleMillis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lbl="@string/throttleMillis"
+        app:min="0"
+        app:max="10000"
+        />
+    <com.panopset.droid.textslider.TextSlider
+        android:id="@+id/globalThrottleCycles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lbl="@string/throttleCycles"
+        app:min="0"
+        app:max="10000"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnCancelGlobalUpdate"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"/>
+
+        <Button
+            android:id="@+id/btnApply"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_to_all_stones"/>
+    </LinearLayout>
+
+</LinearLayout>
