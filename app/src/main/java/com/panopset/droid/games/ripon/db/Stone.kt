@@ -2,10 +2,7 @@ package com.panopset.droid.games.ripon.db
 
 import android.graphics.*
 import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.panopset.droid.games.ripples.skip.ShapeShifter
 import com.panopset.droid.games.ripples.skip.Varial
 
@@ -24,42 +21,42 @@ class Stone(
     @ColumnInfo(name = "click_start") var clickStart: Boolean,
     @ColumnInfo(name = "si") var shapeShifterSelectedIndex: Int
 ) {
-    @Transient
+    @Ignore @Transient
     var globalRandomColorStartFlag: Boolean = false
-    @Transient
+    @Ignore @Transient
     var isSleeping = false
-    @Transient
+    @Ignore @Transient
     var cycleCount = 0
-    @Transient
+    @Ignore @Transient
     var delayR = 0
-    @Transient
+    @Ignore @Transient
     var delayG = 0
-    @Transient
+    @Ignore @Transient
     var delayB = 0
-    @Transient
+    @Ignore @Transient
     var cx = 0.0F
-    @Transient
+    @Ignore @Transient
     var cy = 0.0F
-    @Transient
+    @Ignore @Transient
     var mx = 0.0F
-    @Transient
+    @Ignore @Transient
     var my = 0.0F
-    @Transient
+    @Ignore @Transient
     var rd = Varial(0, 255, 1F)
-    @Transient
+    @Ignore @Transient
     var gn = Varial(0, 255, 1F)
-    @Transient
+    @Ignore @Transient
     var bl = Varial(0, 255, 1F)
-    @Transient
+    @Ignore @Transient
     val radiusx = Varial(0, 10000, 1F)
-    @Transient
+    @Ignore @Transient
     val radiusy = Varial(0, 10000, 1F)
 
-    @Transient
+    @Ignore @Transient
     var started: Boolean = false
-    @Transient
+    @Ignore @Transient
     val paint = Paint()
-    @Transient
+    @Ignore @Transient
     var shapeShifter = ShapeShifter.RECT
 
     init {
