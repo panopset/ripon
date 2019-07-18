@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun go() {
         if (stoneViewModel.allStones.value != null) {
             val stones: List<Stone>? = stoneViewModel.allStones.value
-            if (stones == null) {
+            if (stones == null || stones.isEmpty()) {
                 Handler(mainLooper).post {
                     Toast.makeText(
                         applicationContext,

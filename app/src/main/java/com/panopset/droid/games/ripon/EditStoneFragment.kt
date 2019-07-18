@@ -49,9 +49,15 @@ class EditStoneFragment : Fragment() {
             arguments?.getString(STONE_KEY)
         }
         runBlocking {
-            if (stoneKey != null) {
-                val stone = MainActivity.stoneViewModel.get(stoneKey)
-                if (stone != null) {
+            if (stoneKey != null && !stoneKey.isBlank()) {
+                var stone = MainActivity.stoneViewModel.get(stoneKey)
+                if (stone == null) {
+                    Toast.makeText(
+                        context,
+                        "loading...",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
                     scName = rootView.findViewById(R.id.sc_name)
                     val cancelBtn = rootView.findViewById<Button>(R.id.sc_cancel)
                     if (MainActivity.singlePane) {
@@ -63,7 +69,7 @@ class EditStoneFragment : Fragment() {
                         }
                     } else {
                         val layout = cancelBtn.parent as ViewGroup
-                        layout?.removeView(cancelBtn)
+                        layout.removeView(cancelBtn)
                     }
                     val saveBtn = rootView.findViewById<Button>(R.id.sc_save)
                     saveBtn.setOnClickListener {
@@ -89,9 +95,7 @@ class EditStoneFragment : Fragment() {
                         runBlocking {
                             stone.let { it1 -> MainActivity.stoneViewModel.delete(it1) }
                         }
-                        if (MainActivity.singlePane) {
-                            startActivity(Intent(context, MainActivity::class.java))
-                        }
+                        startActivity(Intent(context, MainActivity::class.java))
                     }
                     scName.text = stone.name
                     throttleMillis.setValue(stone.dm)
