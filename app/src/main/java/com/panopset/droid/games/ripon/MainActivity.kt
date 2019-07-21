@@ -14,7 +14,6 @@ import com.google.gson.Gson
 import com.panopset.droid.games.ripon.db.Stone
 import com.panopset.droid.games.ripon.db.StoneFactory
 import com.panopset.droid.games.ripon.db.StoneViewModel
-import com.panopset.droid.games.ripples.skip.BagOfStones
 import kotlinx.android.synthetic.main.include_stone_list_scroller.*
 import kotlinx.android.synthetic.main.stone_list.*
 import kotlinx.coroutines.runBlocking
@@ -50,9 +49,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupControlPanel() {
+        findViewById<Button>(R.id.cmd_go).setOnClickListener { go() }
         findViewById<Button>(R.id.cmd_clear).setOnClickListener { clear() }
         findViewById<Button>(R.id.cmd_add).setOnClickListener { add() }
-        findViewById<Button>(R.id.cmd_go).setOnClickListener { go() }
         findViewById<Button>(R.id.cmd_import).setOnClickListener { import() }
         findViewById<Button>(R.id.cmd_share).setOnClickListener { share() }
         findViewById<Button>(R.id.cmd_options).setOnClickListener{ options() }
@@ -60,21 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun go() {
-        if (stoneViewModel.allStones.value != null) {
-            val stones: List<Stone>? = stoneViewModel.allStones.value
-            if (stones == null || stones.isEmpty()) {
-                Handler(mainLooper).post {
-                    Toast.makeText(
-                        applicationContext,
-                        R.string.empty_warning,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }// so 20059188
-            } else {
-                BagOfStones.initFrom(stones)
-                startActivity(Intent(this@MainActivity, FunDrawScreenActivity::class.java))
-            }
-        }
+        stoneViewModel.go(this@MainActivity)
     }
 
     private fun clear() {
@@ -90,14 +75,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, JsonImportActivity::class.java))
     }
 
-    private fun options() {
-        startActivity(Intent(this@MainActivity, GlobalOptionsActivity::class.java))
-    }
-
-    private fun preview() {
-        startActivity(Intent(this@MainActivity, Landing::class.java))
-    }
-
     private fun share() {
         val stones = stoneViewModel.allStones.value
         if (stones == null || stones.isEmpty()) {
@@ -111,6 +88,14 @@ class MainActivity : AppCompatActivity() {
             action = Intent.ACTION_SEND
             startActivity(this)
         }
+    }
+
+    private fun options() {
+        startActivity(Intent(this@MainActivity, GlobalOptionsActivity::class.java))
+    }
+
+    private fun preview() {
+        startActivity(Intent(this@MainActivity, Landing::class.java))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {

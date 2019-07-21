@@ -1,9 +1,17 @@
 package com.panopset.droid.games.ripon.db
 
+import android.app.Activity
 import android.app.Application
+import android.content.Intent
+import android.os.Handler
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.panopset.droid.games.ripon.FunDrawScreenActivity
+import com.panopset.droid.games.ripon.MainActivity
+import com.panopset.droid.games.ripon.R
+import com.panopset.droid.games.ripples.skip.BagOfStones
 import kotlinx.coroutines.launch
 
 class StoneViewModel(application: Application) : AndroidViewModel(application) {
@@ -38,5 +46,23 @@ class StoneViewModel(application: Application) : AndroidViewModel(application) {
     fun upsert(stone: Stone) = viewModelScope.launch {
         insert(stone)
         repository.update(stone)
+    }
+
+    fun go(activity: Activity) {
+        if (MainActivity.stoneViewModel.allStones.value != null) {
+            val stones: List<Stone>? = MainActivity.stoneViewModel.allStones.value
+            if (stones == null || stones.isEmpty()) {
+                Handler(activity.mainLooper).post {
+                    Toast.makeText(
+                        activity.applicationContext,
+                        R.string.empty_warning,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }// so 20059188
+            } else {
+                BagOfStones.initFrom(stones)
+                activity.startActivity(Intent(activity, FunDrawScreenActivity::class.java))
+            }
+        }
     }
 }
