@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Landing" />
         <activity android:name=".NewStoneActivity" />
         <activity android:name=".EditStoneActivity" />
         <activity android:name=".JsonImportActivity" />

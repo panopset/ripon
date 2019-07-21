@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.cmd_import).setOnClickListener { import() }
         findViewById<Button>(R.id.cmd_share).setOnClickListener { share() }
         findViewById<Button>(R.id.cmd_options).setOnClickListener{ options() }
+        findViewById<Button>(R.id.cmd_preview).setOnClickListener{ preview() }
     }
 
     private fun go() {
@@ -91,6 +92,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun options() {
         startActivity(Intent(this@MainActivity, GlobalOptionsActivity::class.java))
+    }
+
+    private fun preview() {
+        startActivity(Intent(this@MainActivity, Landing::class.java))
     }
 
     private fun share() {

@@ -49,6 +49,12 @@
             android:layout_weight = "1"
             android:text="@string/cmd_go" />
         <Button
+            android:id="@+id/cmd_preview"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preview" />
+        <Button
             android:id="@+id/cmd_options"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
