@@ -48,21 +48,4 @@ class StoneViewModel(application: Application) : AndroidViewModel(application) {
         repository.update(stone)
     }
 
-    fun go(activity: Activity) {
-        if (MainActivity.stoneViewModel.allStones.value != null) {
-            val stones: List<Stone>? = MainActivity.stoneViewModel.allStones.value
-            if (stones == null || stones.isEmpty()) {
-                Handler(activity.mainLooper).post {
-                    Toast.makeText(
-                        activity.applicationContext,
-                        R.string.empty_warning,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }// so 20059188
-            } else {
-                BagOfStones.initFrom(stones)
-                activity.startActivity(Intent(activity, FunDrawScreenActivity::class.java))
-            }
-        }
-    }
 }

@@ -7,9 +7,10 @@ import android.graphics.Matrix
 import android.graphics.Point
 import android.util.AttributeSet
 import android.util.Log
-import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import com.panopset.droid.games.ripon.central.FastPainter
+import com.panopset.droid.games.ripon.central.FastPainterFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +18,6 @@ import kotlinx.coroutines.launch
 class FunView(context: Context, attrs: AttributeSet) : SurfaceView(context, attrs),
     SurfaceHolder.Callback {
     private var running = true
-    private val artist = Artist()
 
     private var tag = "FunView SurfaceView"
     private lateinit var canvasBM: Canvas
@@ -25,16 +25,8 @@ class FunView(context: Context, attrs: AttributeSet) : SurfaceView(context, attr
     private lateinit var identityMatrix: Matrix
 
     init {
-        setOnTouchListener { v, event ->
-            val pointerIndex = event.actionIndex
-            if (pointerIndex > 1) {
-                artist.togglePaused()
-            } else {
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> artist.touchDown(event.x, event.y)
-                    MotionEvent.ACTION_UP -> artist.touchUp(event.x, event.y)
-                }
-            }
+        setOnTouchListener { _, event ->
+            fp.touched(event)
             true
         }
         holder.addCallback(this)
@@ -48,18 +40,17 @@ class FunView(context: Context, attrs: AttributeSet) : SurfaceView(context, attr
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
-        Log.i(tag, "surfaceCreated")
+        fp = FastPainterFactory.create()
         running = true
         val size = Point(width, height)
         display.getRealSize(size)
-
         bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_8888)
         identityMatrix = Matrix()
         canvasBM = Canvas()
         canvasBM.setBitmap(bitmap)
         CoroutineScope(Dispatchers.Default).launch {
             while (running) {
-                artist.draw(canvasBM, left, top, width, height)
+                fp.draw(canvasBM, left, top, width, height)
             }
         }
     }
@@ -75,4 +66,6 @@ class FunView(context: Context, attrs: AttributeSet) : SurfaceView(context, attr
         Log.i(tag, "surfaceDestroyed")
         running = false
     }
+
+    var fp: FastPainter = FastPainterFactory.create()
 }

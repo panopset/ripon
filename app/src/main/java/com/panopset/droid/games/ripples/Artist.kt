@@ -2,18 +2,22 @@ package com.panopset.droid.games.ripples
 
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.view.MotionEvent
+import com.panopset.droid.games.ripon.MainActivity
+import com.panopset.droid.games.ripon.central.FastPainter
 import com.panopset.droid.games.ripples.skip.BagOfStones
 
-class Artist {
+class Artist : FastPainter {
     private val backgroundPainter = BackgroundPainter()
     private val rect = Rect()
     private var isPaused = false
 
     init {
         backgroundPainter.clear()
+        BagOfStones.init()
     }
 
-    fun draw(canvas: Canvas, x: Int, y: Int, w: Int, h: Int) {
+    override fun draw(canvas: Canvas, x: Int, y: Int, w: Int, h: Int) {
         if (isPaused) {
             return
         }
@@ -25,6 +29,22 @@ class Artist {
             }
             Ripon.draw(canvas, rect, stone)
         }
+    }
+
+    override fun touched(event: MotionEvent) {
+        val pointerIndex = event.actionIndex
+        if (pointerIndex > 1) {
+            togglePaused()
+        } else {
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> touchDown(event.x, event.y)
+                MotionEvent.ACTION_UP -> touchUp(event.x, event.y)
+            }
+        }
+    }
+
+    override fun isReady(): Boolean {
+        return BagOfStones.stones.isNotEmpty()
     }
 
     private var xDown = 0.0F

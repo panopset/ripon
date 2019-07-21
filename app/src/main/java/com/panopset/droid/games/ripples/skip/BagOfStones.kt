@@ -1,6 +1,7 @@
 package com.panopset.droid.games.ripples.skip
 
 import com.google.gson.Gson
+import com.panopset.droid.games.ripon.MainActivity
 import com.panopset.droid.games.ripon.db.Stone
 import java.util.*
 
@@ -41,10 +42,13 @@ object BagOfStones {
         return true
     }
 
-    fun initFrom(stones: List<Stone>) {
+    fun init() {
+        val stones: List<Stone>? = MainActivity.stoneViewModel.allStones.value
         this.stones.clear()
-        for (stone in stones) {
-            this.stones[stone.name] = stone
+        if (stones != null && stones.isNotEmpty()) {
+            for (stone in stones) {
+                this.stones[stone.name] = stone
+            }
         }
     }
 }

@@ -11,9 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import com.panopset.droid.games.ripon.central.FastPainterFactory
+import com.panopset.droid.games.ripon.central.Launcher
 import com.panopset.droid.games.ripon.db.Stone
 import com.panopset.droid.games.ripon.db.StoneFactory
 import com.panopset.droid.games.ripon.db.StoneViewModel
+import com.panopset.droid.games.ripples.skip.BagOfStones
 import kotlinx.android.synthetic.main.include_stone_list_scroller.*
 import kotlinx.android.synthetic.main.stone_list.*
 import kotlinx.coroutines.runBlocking
@@ -59,7 +62,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun go() {
-        stoneViewModel.go(this@MainActivity)
+        //Launcher().go()
+
+        if (FastPainterFactory.isReady()) {
+            startActivity(Intent(this, FunDrawScreenActivity::class.java))
+        } else {
+            Handler(mainLooper).post {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.empty_warning,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }// so 20059188
+        }
     }
 
     private fun clear() {
