@@ -3,18 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <Button
-        android:id="@+id/btn_go"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/ripon_button"
-        android:gravity="center"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:textSize="24sp"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white" />
+
     <Button
         android:id="@+id/btn_config"
         android:layout_width="wrap_content"
@@ -26,5 +15,18 @@
         android:minWidth="0dp"
         android:textSize="24sp"
         android:text="@string/cmd_options"
+        android:textColor="@android:color/white" />
+    
+    <Button
+        android:id="@+id/btn_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/ripon_button"
+        android:gravity="center"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:textSize="24sp"
+        android:text="@string/cmd_go"
         android:textColor="@android:color/white" />
 </LinearLayout>

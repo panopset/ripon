@@ -17,6 +17,7 @@ class FastPainterFactory {
             nzr = value
         }
         fun isReady(): Boolean {
+            BagOfStones.init()
             if (nzr) {
                 return BagOfStones.stones.isNotEmpty()
             } else {

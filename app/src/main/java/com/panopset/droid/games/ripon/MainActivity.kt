@@ -3,20 +3,18 @@ package com.panopset.droid.games.ripon
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.panopset.droid.games.ripon.central.FastPainterFactory
 import com.panopset.droid.games.ripon.central.Launcher
 import com.panopset.droid.games.ripon.db.Stone
 import com.panopset.droid.games.ripon.db.StoneFactory
 import com.panopset.droid.games.ripon.db.StoneViewModel
-import com.panopset.droid.games.ripples.skip.BagOfStones
 import kotlinx.android.synthetic.main.include_stone_list_scroller.*
 import kotlinx.android.synthetic.main.stone_list.*
 import kotlinx.coroutines.runBlocking
@@ -33,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(
+            AppCompatDelegate.MODE_NIGHT_YES
+        )
         setContentView(R.layout.activity_main)
         singlePane = stone_detail_container == null
         this.title = resources.getString(R.string.title_stone_list)//so 3488664
@@ -52,29 +53,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupControlPanel() {
-        findViewById<Button>(R.id.cmd_go).setOnClickListener { go() }
+        findViewById<Button>(R.id.cmd_go).setOnClickListener { Launcher().go(this) }
         findViewById<Button>(R.id.cmd_clear).setOnClickListener { clear() }
         findViewById<Button>(R.id.cmd_add).setOnClickListener { add() }
         findViewById<Button>(R.id.cmd_import).setOnClickListener { import() }
         findViewById<Button>(R.id.cmd_share).setOnClickListener { share() }
-        findViewById<Button>(R.id.cmd_options).setOnClickListener{ options() }
-        findViewById<Button>(R.id.cmd_preview).setOnClickListener{ preview() }
-    }
-
-    private fun go() {
-        //Launcher().go()
-
-        if (FastPainterFactory.isReady()) {
-            startActivity(Intent(this, FunDrawScreenActivity::class.java))
-        } else {
-            Handler(mainLooper).post {
-                Toast.makeText(
-                    applicationContext,
-                    R.string.empty_warning,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }// so 20059188
-        }
+        findViewById<Button>(R.id.cmd_options).setOnClickListener { options() }
+        findViewById<Button>(R.id.cmd_preview).setOnClickListener { preview() }
     }
 
     private fun clear() {
