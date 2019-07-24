@@ -9,6 +9,7 @@ class Landing : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
+        findViewById<Button>(R.id.btn_config).setOnClickListener{  }
         findViewById<Button>(R.id.btn_go).setOnClickListener{ Launcher().go(this) }
     }
 }
