@@ -7,6 +7,7 @@ import android.graphics.Matrix
 import android.graphics.Point
 import android.util.AttributeSet
 import android.util.Log
+import android.view.KeyEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.panopset.droid.games.ripon.central.FastPainter

@@ -32,14 +32,9 @@ class Artist : FastPainter {
     }
 
     override fun touched(event: MotionEvent) {
-        val pointerIndex = event.actionIndex
-        if (pointerIndex > 1) {
-            togglePaused()
-        } else {
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> touchDown(event.x, event.y)
-                MotionEvent.ACTION_UP -> touchUp(event.x, event.y)
-            }
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> touchDown(event.x, event.y)
+            MotionEvent.ACTION_UP -> touchUp(event.x, event.y)
         }
     }
 
@@ -71,7 +66,7 @@ class Artist : FastPainter {
         }
     }
 
-    fun togglePaused() {
+    override fun pause() {
         isPaused = !isPaused
     }
 }

@@ -6,6 +6,7 @@
     <string name="cmd_share">Export</string>
     <string name="cmd_import">Import</string>
     <string name="cmd_go">go</string>
+    <string name="cmd_edit">edit</string>
     <string name="cmd_options">options</string>
     <string name="title_stone_list">Skipping stones</string>
     <string name="hint_stone">Stone name</string>

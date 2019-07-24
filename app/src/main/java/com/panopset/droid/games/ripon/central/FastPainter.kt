@@ -10,4 +10,6 @@ interface FastPainter {
     fun touched(event: MotionEvent)
 
     fun isReady(): Boolean
+
+    fun pause()
 }
