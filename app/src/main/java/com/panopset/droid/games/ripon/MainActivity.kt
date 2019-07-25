@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun preview() {
-        startActivity(Intent(this@MainActivity, Landing::class.java))
+        startActivity(Intent(this@MainActivity, LandingActivity::class.java))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
