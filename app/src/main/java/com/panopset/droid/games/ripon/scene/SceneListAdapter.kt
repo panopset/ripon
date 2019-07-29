@@ -1,5 +1,6 @@
 package com.panopset.droid.games.ripon.scene
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -10,6 +11,7 @@ import com.panopset.droid.games.ripon.R
 class SceneListAdapter internal constructor(
     parentActivity: EditScenesActivity
 ) : RecyclerView.Adapter<SceneListAdapter.SceneViewHolder>() {
+    private val inflater: LayoutInflater = LayoutInflater.from(parentActivity)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SceneViewHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
