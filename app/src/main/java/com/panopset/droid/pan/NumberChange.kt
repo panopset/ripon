@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.panopset.droid.games.ripon.MainActivity
 import com.panopset.droid.games.ripon.R
 import com.panopset.droid.games.ripon.db.ChangeBoundsDef
 import com.panopset.droid.games.ripon.db.StoneRoomDatabase

@@ -11,7 +11,7 @@ class FunDrawScreenActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fundraw_screen)
-        funView = findViewById<FunView>(R.id.funview)
+        funView = findViewById(R.id.funview)
         funView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_FULLSCREEN + View.SYSTEM_UI_FLAG_IMMERSIVE + View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
     }
@@ -20,7 +20,7 @@ class FunDrawScreenActivity : Activity() {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
             if (funView != null) {
                 funView.fp.pause()
-                return true;
+                return true
             }
         }
         return super.onKeyDown(keyCode, event)

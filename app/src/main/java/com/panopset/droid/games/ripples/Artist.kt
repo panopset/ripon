@@ -3,7 +3,6 @@ package com.panopset.droid.games.ripples
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.MotionEvent
-import com.panopset.droid.games.ripon.MainActivity
 import com.panopset.droid.games.ripon.central.FastPainter
 import com.panopset.droid.games.ripples.skip.BagOfStones
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.panopset.droid.games.ripon.scene.SceneListAdapter
+import com.panopset.droid.games.ripon.scene.db.ScenesListModel
 import kotlinx.android.synthetic.main.edit_scenes_list.*
 
 class EditScenesActivity : AppCompatActivity() {
@@ -19,5 +20,9 @@ class EditScenesActivity : AppCompatActivity() {
         scenes_list.adapter = adapter
         scenes_list.layoutManager = LinearLayoutManager(this)
         scenesListModel = ViewModelProviders.of(this).get(ScenesListModel::class.java)
+    }
+
+    companion object {
+        lateinit var scenesListModel: ScenesListModel
     }
 }
