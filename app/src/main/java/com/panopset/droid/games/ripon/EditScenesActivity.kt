@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.panopset.droid.games.ripon.scene.SceneListAdapter
-import com.panopset.droid.games.ripon.scene.db.ScenesListModel
+import com.panopset.droid.games.ripon.scene.SeneListAdapter
+import com.panopset.droid.games.ripon.scene.db.SeneListModel
 import kotlinx.android.synthetic.main.edit_scenes_list.*
 
 class EditScenesActivity : AppCompatActivity() {
@@ -16,13 +16,13 @@ class EditScenesActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val adapter = SceneListAdapter(this)
+        val adapter = SeneListAdapter(this)
         scenes_list.adapter = adapter
         scenes_list.layoutManager = LinearLayoutManager(this)
-        scenesListModel = ViewModelProviders.of(this).get(ScenesListModel::class.java)
+        seneListModel = ViewModelProviders.of(this).get(SeneListModel::class.java)
     }
 
     companion object {
-        lateinit var scenesListModel: ScenesListModel
+        lateinit var seneListModel: SeneListModel
     }
 }

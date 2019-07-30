@@ -5,23 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Scene::class], version = 1)
-abstract class ScenesRoomDatabase : RoomDatabase() {
+@Database(entities = [Sene::class], version = 1)
+abstract class SeneRoomDatabase : RoomDatabase() {
 
-    abstract fun scenesDao(): ScenesDao
+    abstract fun seneDao(): SeneDao
 
     companion object {
         @Volatile
-        private var INSTANCE: ScenesRoomDatabase? = null
+        private var INSTANCE: SeneRoomDatabase? = null
 
         @Synchronized fun getDatabase(
             context: Context
-        ): ScenesRoomDatabase {
+        ): SeneRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    ScenesRoomDatabase::class.java,
-                    "scenes_database"
+                    SeneRoomDatabase::class.java,
+                    "sene_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

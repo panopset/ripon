@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.panopset.droid.games.ripon.EditScenesActivity
 import com.panopset.droid.games.ripon.R
 
-class SceneListAdapter internal constructor(
+class SeneListAdapter internal constructor(
     parentActivity: EditScenesActivity
-) : RecyclerView.Adapter<SceneListAdapter.SceneViewHolder>() {
+) : RecyclerView.Adapter<SeneListAdapter.SceneViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(parentActivity)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SceneViewHolder {
