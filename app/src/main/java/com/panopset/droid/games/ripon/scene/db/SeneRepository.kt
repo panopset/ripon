@@ -12,4 +12,20 @@ class SeneRepository(private val seneDao: SeneDao) {
         }
         return null
     }
+
+    suspend fun insert(sene: Sene) {
+        seneDao.insert(sene)
+    }
+
+    suspend fun delete(sene: Sene) {
+        seneDao.delete(sene)
+    }
+
+    suspend fun clear() {
+        seneDao.deleteAll()
+    }
+
+    suspend fun update(sene: Sene) {
+        seneDao.update(sene)
+    }
 }
