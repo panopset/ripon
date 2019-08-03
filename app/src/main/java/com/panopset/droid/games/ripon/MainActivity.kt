@@ -52,6 +52,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+        if (requestCode == newStoneActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            intentData?.let { data ->
+                val stone =
+                    StoneFactory.defaultStone(data.getStringExtra(NewStoneActivity.EXTRA_REPLY))
+                stoneViewModel.insert(stone)
+                EditStoneIntentFactory(this, stone.name).editStone()
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
     private fun setupControlPanel() {
         findViewById<Button>(R.id.cmd_go).setOnClickListener { Launcher().go(this) }
         findViewById<Button>(R.id.cmd_clear).setOnClickListener { clear() }
@@ -96,24 +114,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun preview() {
         startActivity(Intent(this@MainActivity, LandingActivity::class.java))
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intentData)
-        if (requestCode == newStoneActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.let { data ->
-                val stone =
-                    StoneFactory.defaultStone(data.getStringExtra(NewStoneActivity.EXTRA_REPLY))
-                stoneViewModel.insert(stone)
-                EditStoneIntentFactory(this, stone.name).editStone()
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG
-            ).show()
-        }
     }
 
     private fun setupRecyclerView() {

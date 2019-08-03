@@ -9,6 +9,7 @@
     <string name="cmd_edit">edit</string>
     <string name="cmd_options">options</string>
     <string name="title_stone_list">Skipping stones</string>
+    <string name="hint_sene">Scene name</string>
     <string name="hint_stone">Stone name</string>
     <string name="button_save">Save</string>
     <string name="button_duplicate">Duplicate</string>

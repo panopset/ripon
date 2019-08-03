@@ -12,6 +12,7 @@ import com.panopset.droid.games.ripon.scene.SeneListAdapter
 import com.panopset.droid.games.ripon.scene.db.Sene
 import com.panopset.droid.games.ripon.scene.db.SeneFactory
 import com.panopset.droid.games.ripon.scene.db.SeneViewModel
+import kotlinx.android.synthetic.main.activity_new_sene.*
 import kotlinx.android.synthetic.main.edit_scenes_list.*
 import kotlinx.coroutines.runBlocking
 
@@ -38,7 +39,12 @@ class EditScenesActivity : AppCompatActivity() {
                 val sene =
                     SeneFactory.defaultSene(data.getStringExtra(NewSeneActivity.EXTRA_REPLY))
                 seneViewModel.insert(sene)
-                EditSeneIntentFActory(this, sene.name).editSene()
+
+                val intent = Intent(this, EditSeneActivity::class.java)
+                intent.putExtra(EditSeneActivity.SENE_KEY, newSeneName.text)
+                startActivity(intent)
+
+//              EditSeneIntentFactory(this, sene.name).editSene()
             }
         } else {
             Toast.makeText(

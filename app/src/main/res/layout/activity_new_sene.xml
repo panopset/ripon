@@ -6,13 +6,13 @@
               android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/newStoneName"
+        android:id="@+id/newSeneName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/big_padding"
         android:layout_marginBottom="@dimen/big_padding"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_stone"
+        android:hint="@string/hint_sene"
         android:inputType="textAutoComplete"
         android:padding="@dimen/small_padding"
         android:textSize="18sp"
